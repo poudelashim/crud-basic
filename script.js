@@ -33,10 +33,19 @@ const createPost = () => {
   <div class="container-right">
   <h5>${data.text}</h5>
   <div class="options">
-      <i class="fa-regular fa-pen-to-square"></i>
-      <i class="fa-solid fa-trash"></i>
+      <i onClick="editPost(this)" class="fa-regular fa-pen-to-square"></i>
+      <i onClick="deletePost(this)" class="fa-solid fa-trash"></i>
   </div>
 </div>
   `;
   textArea.value = "";
+};
+
+const deletePost = (e) => {
+  e.parentElement.parentElement.remove();
+};
+
+const editPost = (e) => {
+  textArea.value = e.parentElement.previousElementSibling.innerHTML;
+  e.parentElement.parentElement.remove();
 };
